@@ -1,0 +1,62 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}">
+{% endblock css %}
+
+{% block content %}
+	
+	<script type="text/javascript">
+		
+		var products = [
+			{% for product in products %}
+				{% if not forloop.first %},{% endif %}
+				{	
+					id: "{{ product.id }}",
+					cat_id: "{{ product.category.id }}",
+					name: "{{ product.name }}",
+					price: parseFloat("{{ product.price }}"),
+					category: "{{ product.category }}",
+					imageURL: "{{ product.imageURL }}"
+					
+				}
+			{% endfor %}
+		]
+	</script>
+	{% include 'store/filter.html' %}
+	
+	
+	<div class="container">
+		<div class="row-col-12">
+			<div id='core' class="row">
+				{% for product in products %}
+				<div class="col-lg-4 mb-2">
+					<img class="thumbnail" src="{{product.imageURL}}">
+					<div class="box-element product">
+						<h6><strong>{{product.name}}</strong></h6>
+						<hr>
+						<div class="row">
+							<div class="col-9">
+								<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart mt-1">Add to Cart</button>
+								<a class="btn btn-outline-success mt-1" href="#">View</a>
+							</div>
+							<div class="col-3">
+								<h5 id='price'><strong>{{product.price}} DH</strong></h5>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	
+
+{% endblock content %}
+
+{% block js %}
+<!-- <script src="{% static 'js/store.js'%}"></script> -->
+{% endblock js %}

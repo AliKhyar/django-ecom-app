@@ -1,0 +1,18 @@
+
+#price {
+    float: right; 
+    /* display: inline-block;   */
+    font-size: 18px;
+    place-content: end;
+}
+
+
+
+.thumbnail{
+    border-radius: 15px 15px 5px 5px;    
+}
+
+.flexible {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+

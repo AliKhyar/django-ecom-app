@@ -1,0 +1,42 @@
+<div class="container-fluid">
+
+  <p>
+    <a class="btn btn-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Filters
+    </a>
+  </p>
+
+  <div class="collapse" id="collapseExample">
+    <div class="container card card-body">
+      <!--##### row #####-->
+      <form method="post" role="form">
+        {% csrf_token %}
+        <!-- ####### first row for leve/want to continue in/ city########## -->
+        <div class="row" id="row-choose">
+          <div class="col">
+            <select id="category" name="category" class="browser-default custom-select drops">
+              <option value=-1 selected>Category</option>
+              {% for category in categories %}
+                <option value="{{category.id}}">{{category.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col">
+            <select id='price' name="price" class="browser-default custom-select drops">
+              <option value=-1 selected>Price</option>
+              <option value=1>1000dh and below</option>
+              <option value=2>2000dh and below</option>
+              <option value=3>4000dh and below</option>
+              <option value=4>8000dh and below</option>
+              <option value=5>10.000dh and below</option>
+              <option value=6>+ 10.000dh</option>
+            </select>
+          </div>
+        </div>
+        <!-- ####### end first row ########## -->
+  
+      </form>
+     
+    </div>
+  </div>
+</div>
