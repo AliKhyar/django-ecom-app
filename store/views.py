@@ -4,7 +4,7 @@ import json
 import datetime
 from .models import * 
 from .utils import cookieCart, cartData, guestOrder
-from store.models import Product, Category
+from store.models import Category, Order, OrderItem, Product
 
 def store(request):
 	data = cartData(request)
@@ -51,7 +51,6 @@ def updateItem(request):
 	order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
 	orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
-
 	if action == 'add':
 		orderItem.quantity = (orderItem.quantity + 1)
 	elif action == 'remove':
@@ -86,7 +85,8 @@ def processOrder(request):
 	ShippingAddress.objects.create(
 	customer=customer,
 	order=order,
-	address=data['shipping']['address'],
+	phone=customer.phone,
+	address=data['shipping']['address'],	
 	city=data['shipping']['city'],
 	state=data['shipping']['state'],
 	zipcode=data['shipping']['zipcode'],

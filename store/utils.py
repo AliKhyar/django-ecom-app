@@ -1,5 +1,7 @@
 import json
 from .models import *
+from store.models import Order
+from store.models import Customer, Order
 
 def cookieCart(request):
 
@@ -40,7 +42,6 @@ def cookieCart(request):
 			# if product.digital == False:
 			order['shipping'] = True
 		except:
-			# print("there's excep")
 			pass
 	
 	# print('items are:',items)
@@ -60,7 +61,6 @@ def cartData(request):
 		# print('Items: ',items)
 		# print('order: ',order)
 		# print('cartItems: ', cartItems)
-
 	return {'cartItems':cartItems ,'order':order, 'items':items}
 
 	

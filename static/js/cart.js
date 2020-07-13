@@ -96,12 +96,10 @@ function display(products){
     })
     displayed_products = displayed_products.join("")
     core.innerHTML = displayed_products
-    //#### event listners 3la lbuttons
 }
 
 function buttonsLisntners(){
     for (i = 0; i < updateBtns.length; i++) {
-
         updateBtns[i].addEventListener('click', function(){
             console.log('buttonsLisntners triggred')
             var productId = this.dataset.product
@@ -157,17 +155,14 @@ for (i = 0; i < drops.length; i++) {
 
 function addCookieItem(productId, action){
 	console.log('User is not authenticated')
-
 	if (action == 'add'){
 		if (cart[productId] == undefined){
             cart[productId] = {'quantity':1}
-            //console.log(productId)
-
 		}else{
-			cart[productId]['quantity'] += 1
+            cart[productId]['quantity'] += 1
 		}
-	}
-
+    }
+    
 	if (action == 'remove'){
 		cart[productId]['quantity'] -= 1
 
